@@ -1,5 +1,5 @@
 const CustomAPIError = require('../errors/custom-error');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
 const login = async (req, res) => {
     const { username, password } = req.body;
@@ -19,9 +19,10 @@ const login = async (req, res) => {
 };
 
 const dashboard = async (req, res) => {
+    console.log(req.user);
     const luckyNumber = Math.floor(Math.random() * 100);
     res.status(200).json({
-        msg: `Hello, Shreesha H R`,
+        msg: `Hello, ${req.user.username}`,
         secret: `Here is your authorized data, your lucky number is ${luckyNumber}`,
     });
 };
